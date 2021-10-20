@@ -60,7 +60,7 @@ const HeaderAvatar = styled(Avatar)`
     }
     `
 const HeaderMiddle = styled.div`
-flex: 0.4;
+flex: 0.6;
 opacity: 1;
 border-radius: 6px;
 background-color: #421f44;
@@ -73,10 +73,12 @@ border: 1px gray solid;
 > input{
     background-color: transparent;
     border: none;
-    text-align: center;
+    text-align: left;
     outline: none;
     min-width: 30vw;
-
+}
+> .MuiSvgIcon-root{
+    margin-left: -50px;
 }
 `
 const HeaderRight = styled.div`
