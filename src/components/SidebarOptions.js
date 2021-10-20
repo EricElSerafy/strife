@@ -36,7 +36,7 @@ function SidebarOptions({Icon, title, addChannelOption, id}) {
         <SidebarOptionsContainer
             onClick = {addChannelOption ? addChannel : selectChannel}>
             {Icon && <Icon fontSize = "small" style={{
-                padding: 10}} />}
+                padding: 5}} />}
                 {Icon ? (
                     <h3>{title}</h3>
                 ) : ( 
