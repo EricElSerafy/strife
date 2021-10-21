@@ -9,6 +9,8 @@ import { useCollection, useDocument } from "react-firehooks/firestore"
 import { db } from '../firebase';
 import { collection, orderBy, query, doc } from '@firebase/firestore';
 import Message from './Message';
+import logo from './family.jpg'
+
 
 function Chat() {
     const roomID = useSelector(selectRoomID);
@@ -42,14 +44,15 @@ function Chat() {
                 </HeaderRight>
             </Header>
             <ChatMessages> 
-                {roomMessages?.docs.map((doc) => {
+                {roomMessages?.docs.map(doc => {
                     const {message, timestamp, user,userImage} = doc.data();
                     return(
                         <Message
                         key = {doc.id}
                         message = {message}
                         timestamp = {timestamp}
-                        userImage = {userImage}
+                        user = {user}
+                        userImage = {userImage }
                         /> 
                     )
                 }

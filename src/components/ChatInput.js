@@ -4,6 +4,8 @@ import { Button } from '@mui/material'
 import { db } from "../firebase"
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useState } from "react";
+import logo from './family.jpg';
+
 
 
 
@@ -25,7 +27,7 @@ function ChatInput( {channelName, channelID} ) {
             message: input,
             timestamp: serverTimestamp(),
             user: "Eric El-Serafy",
-            userImage: "https://scontent.fyto1-2.fna.fbcdn.net/v/t1.6435-9/240900533_10158021349241128_6458772713841142032_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=730e14&_nc_ohc=Fob-WhSn8v4AX96X-BL&_nc_oc=AQls2yxsY8GjZWYfeV_IkKzoM-vanNqx1sTI37GcIp_q4u73PTsDHJ8cg_X4N9maPgM&_nc_ht=scontent.fyto1-2.fna&oh=ae7efc32ca23befe90f2caebd0395a21&oe=61970FD7"
+            userImage: logo
         });
         // addDoc(collection(doc(collection(db, "rooms"), channelID), "messages"), 
 
