@@ -2,16 +2,16 @@ import React, {useRef} from "react"
 import styled from "styled-components"
 import { Button } from '@mui/material'
 import { db } from "../firebase"
-import { collection, addDoc, doc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useState } from "react";
 
 
 
 
-function ChatInput(channelName, channelID) {
+function ChatInput( {channelName, channelID} ) {
     const [input, setInput] = useState("");
 
-    console.log(channelID);
+   
 
     const sendMessage = async (e) => {
         e.preventDefault();
@@ -20,8 +20,8 @@ function ChatInput(channelName, channelID) {
             return false;
             
         }
-
-        await addDoc(collection(db, "rooms", "123", "messages"), {
+        
+        await addDoc(collection(db, "rooms", channelID, "messages"), {
             message: input,
             timestamp: serverTimestamp(),
             user: "Eric El-Serafy",
@@ -35,7 +35,7 @@ function ChatInput(channelName, channelID) {
     return (
         <ChatInputContainer>
             <form>
-                <input placeholder = {`Message #ROOM`}
+                <input placeholder = {`Message #${channelName}`}
                 value = {input}
                 onChange = {(e) => setInput(e.target.value)}/>
 
