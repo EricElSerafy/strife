@@ -10,7 +10,7 @@ import logo from './family.jpg';
 
 
 
-function ChatInput( {channelName, channelID} ) {
+function ChatInput( {channelName, channelID, chatRef} ) {
     const [input, setInput] = useState("");
 
    
@@ -27,9 +27,13 @@ function ChatInput( {channelName, channelID} ) {
             message: input,
             timestamp: serverTimestamp(),
             user: "Eric El-Serafy",
-            userImage: logo
+            userImage: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
         });
-        // addDoc(collection(doc(collection(db, "rooms"), channelID), "messages"), 
+        
+        chatRef?.current?.scrollIntoView({
+            behavior: "smooth"        
+
+        });
 
         setInput('');
     };
