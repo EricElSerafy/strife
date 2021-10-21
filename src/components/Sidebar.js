@@ -15,11 +15,16 @@ import AddIcon from '@mui/icons-material/Add';
 import SidebarOptions from "./SidebarOptions";
 import { db } from "../firebase"
 import { collection } from "firebase/firestore";
-import { useCollection } from "react-firehooks/firestore"
+import { useCollection } from "react-firehooks/firestore";
+import { useAuthState } from "react-firehooks/";
+import { auth } from '../firebase';
 
 
  function Sidebar(){
     const[channels, loading, error] = useCollection(collection(db,"rooms"));
+
+
+    const [user] = useAuthState(auth);
         return (
             <SidebarContainer>
                 <SidebarHeader>
@@ -27,7 +32,7 @@ import { useCollection } from "react-firehooks/firestore"
                         <h2>Company Inc.</h2>
                         <h3>
                             <FiberManualRecordIcon/>
-                            Eric El-Serafy
+                            {user.displayName}
                         </h3>
                     </SidebarInfo>
                     <EditIcon/>
@@ -102,4 +107,6 @@ import { useCollection } from "react-firehooks/firestore"
             margin-right: 2px;
             color: green;
         }
-    `        
+    `    
+    
+

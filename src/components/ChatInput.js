@@ -5,6 +5,8 @@ import { db } from "../firebase"
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useState } from "react";
 import logo from './family.jpg';
+import { useAuthState } from "react-firehooks/";
+import { auth } from '../firebase'
 
 
 
@@ -12,7 +14,7 @@ import logo from './family.jpg';
 
 function ChatInput( {channelName, channelID, chatRef} ) {
     const [input, setInput] = useState("");
-
+    const [user] = useAuthState(auth);
    
 
     const sendMessage = async (e) => {
@@ -26,8 +28,8 @@ function ChatInput( {channelName, channelID, chatRef} ) {
         await addDoc(collection(db, "rooms", channelID, "messages"), {
             message: input,
             timestamp: serverTimestamp(),
-            user: "Eric El-Serafy",
-            userImage: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
+            user: user.displayName,
+            userImage: user.photoURL
         });
         
         chatRef?.current?.scrollIntoView({
@@ -35,7 +37,7 @@ function ChatInput( {channelName, channelID, chatRef} ) {
 
         });
 
-        setInput('');
+        // setInput('');
     };
 
     return (
