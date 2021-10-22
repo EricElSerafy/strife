@@ -37,7 +37,7 @@ function ChatInput( {channelName, channelID, chatRef} ) {
 
         });
 
-        // setInput('');
+        setInput('');
     };
 
     return (

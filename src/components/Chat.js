@@ -26,7 +26,7 @@ function Chat() {
         chatRef?.current?.scrollIntoView({
             behavior: "smooth",
         }); 
-    }, [roomID, loading])
+    }, [roomID, roomMessages])
 
 
     return (

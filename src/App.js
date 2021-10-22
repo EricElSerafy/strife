@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -14,11 +14,17 @@ import { useAuthState } from 'react-firehooks';
 import { auth, } from './firebase';
 import Login from './components/Login';
 import Spinner from "react-spinkit";
+import { useState } from 'react';
 
 function App() {
-  const [user, loading] = useAuthState(auth)
+  const [user] = useAuthState(auth)
+  const [isLoading, setIsLoading] = useState(true)
 
-  if (loading) {
+  useEffect(() => {
+    setTimeout(() => {setIsLoading(false)}, 2000);
+  }, []);
+
+  if (isLoading) {
     return (
         <AppLoading>
             <AppLoadingContents>
